@@ -1,0 +1,18 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  run-auth:
+    cmds:
+      - cp .env auth-frontend/
+      - cd auth-frontend && npm run dev
+    silent: true
+  replace-env:
+    cmds:
+      - op inject -i .env.dev -o .env
+    silent: true
+  run-script:
+    cmds:
+      - cd scripts && python script.py
+    silent: true
